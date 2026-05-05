@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.0;
 
 // 1️⃣ Make a contract called Calculator
 // 2️⃣ Create Result variable to store result
@@ -9,5 +9,29 @@ pragma solidity ^0.8.0;
 
 contract Calculator {
     uint256 public result;
+    
+    function add(uint256 num) public returns (uint256)
+    {
+        result += num;
+        return result;
+    }
 
+    function subtract(uint256 num) public returns (uint256)
+    {
+        result -= num;
+        return result;
+    }
+
+    function multiply(uint256 num) public returns (uint256)
+    {
+        result *= num;
+        return result;
+    }
+   
+
+    function getResult() public view returns(uint256)
+    {
+        return result;
+    }
+     
 }
