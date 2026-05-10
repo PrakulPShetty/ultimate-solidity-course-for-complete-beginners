@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.0;
+pragma experimental ABIEncoderV2;
 
 // 1️⃣  Use require to limit the length of the tweet to be only 280 characters
 // HINT: use bytes to length of tweet
 
 contract Twitter {
+  // define our struct
+
+    uint16 constant MAX_TWEET_LENGTH = 280;
 
     struct Tweet {
         address author;
@@ -20,7 +24,7 @@ contract Twitter {
     function createTweet(string memory _tweet) public {
         // conditional
         // if tweet length <= 280 then we are good, otherwise we revert
-        
+        require(bytes(_tweet).length <= MAX_TWEET_LENGTH, "Tweet is too long bro!" );
 
         Tweet memory newTweet = Tweet({
             author: msg.sender,
