@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.0;
+pragma experimental ABIEncoderV2;
 
 // 1️⃣ Create a Twitter Contract 
 // 2️⃣ Create a mapping between user and tweet 
@@ -9,6 +10,17 @@ pragma solidity ^0.8.0;
 // 5️⃣ Add array of tweets 
 
 contract Twitter {
+  mapping(address => string[]) public tweets;
 
+  function createTweet(string memory _tweet) public {
+    tweets[msg.sender].push(_tweet);
+  }
 
+  function getTweet(address _owner, uint _i) public view returns (string memory) {
+    return tweets[_owner][_i];
+  }
+
+  function getAllTweets(address _owner) public view returns (string[] memory) {
+    return tweets[_owner];
+  }
 }
